@@ -3,15 +3,15 @@ from pyvirtualdisplay import Display
 from selenium import webdriver
 
 
-class TestFirefox(unittest.TestCase):
+class TestChrome(unittest.TestCase):
     """
-    Basic test case that uses firefox as a driver.
+    Basic test case that uses chrome as a driver.
     """
     def setUp(self):
         self.display = Display(visible=0, size=(1024, 768))
         self.display.start()
 
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Chrome()
 
     def test_title(self):
         self.driver.get("http://www.google.com")

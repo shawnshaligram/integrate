@@ -1,30 +1,39 @@
-FROM python:3.5
-
+FROM ubuntu:14.04
 MAINTAINER Shawn Shaligram
 
-# Install Firefox
-RUN \
-    curl 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/35.0/linux-x86_64/en-US/firefox-35.0.tar.bz2' \
-        -o firefox.tar.bz2 &&\
-    bunzip2 firefox.tar.bz2 &&\
-    tar xf firefox.tar &&\
-    rm firefox.tar
-
-RUN apt-get update && apt-get install -y \
-    # Headless browser support
+RUN apt-get -y update && apt-get install -y \
+    unzip \
+    curl \
+    openjdk-7-jre-headless \
     xvfb \
-    # Dependencies needed to launch firefox
-    libasound2 \
-    libgtk2.0-0 \
-    libdbus-glib-1-2 \
-    libxcomposite1
+    fonts-ipafont-gothic \
+    xfonts-100dpi \
+    xfonts-75dpi \
+    xfonts-scalable \
+    xfonts-cyrillic
 
-RUN pip install pyyaml==3.11 requests==2.17.3 selenium==3.4.3
+# Install Chrome Browser
+RUN curl https://dl-ssl.google.com/linux/linux_signing_key.pub -o /tmp/google.pub
+RUN cat /tmp/google.pub | apt-key add -; rm /tmp/google.pub
+RUN echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google.list
+RUN mkdir -p /usr/share/desktop-directories
+RUN apt-get -y update && apt-get install -y google-chrome-stable
 
-ENV PYTHONPATH /
+# Disable the SUID sandbox so that chrome can launch without being in a privileged container
+RUN dpkg-divert --add --rename --divert /opt/google/chrome/google-chrome.real /opt/google/chrome/google-chrome
+RUN echo "#!/bin/bash\nexec /opt/google/chrome/google-chrome.real --disable-setuid-sandbox \"\$@\"" > /opt/google/chrome/google-chrome
+RUN chmod 755 /opt/google/chrome/google-chrome
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+# Install Selenium
+RUN mkdir -p /opt/selenium
+RUN curl http://selenium-release.storage.googleapis.com/2.48/selenium-server-standalone-2.48.2.jar -o /opt/selenium/selenium-server-standalone.jar
 
-CMD [ "python", "-u", "/main.py" ]
+# Install Chrome Driver
+RUN curl http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip -o /opt/selenium/chromedriver_linux64.zip
+RUN cd /opt/selenium; unzip /opt/selenium/chromedriver_linux64.zip; rm -rf chromedriver_linux64.zip;
 
-COPY root /
+ENV DISPLAY :20
+COPY entrypoint.sh /opt/selenium/entrypoint.sh
+
+EXPOSE 4444
+CMD ["sh", "/opt/selenium/entrypoint.sh"]
