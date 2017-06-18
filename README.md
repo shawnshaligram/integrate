@@ -7,7 +7,7 @@ The tests use the python bindings and includes the bare minimum. It includes tes
  - Sample Page Object Pattern 
  - Sample Selenium Tests 
  - Dockerfile setup
- - Screenshotting Capability
+ - BrowserStack Setup Support
  - More to Come! 
 
 ## Usage
@@ -25,8 +25,8 @@ The example code is located at `tests` and `page_objects` in the container. You 
 
 ## Library documentation
 
-Selenium http://www.seleniumhq.org/docs/
-ChromeDriver https://sites.google.com/a/chromium.org/chromedriver/
-BrowserStack https://www.browserstack.com
-Cucumber http://www.rubydoc.info/github/cucumber/cucumber-ruby/
-Docker https://docs.docker.com/engine/quickstart/
+- Selenium http://www.seleniumhq.org/docs/
+- ChromeDriver https://sites.google.com/a/chromium.org/chromedriver/
+- BrowserStack https://www.browserstack.com
+- Cucumber http://www.rubydoc.info/github/cucumber/cucumber-ruby/
+- Docker https://docs.docker.com/engine/quickstart/
