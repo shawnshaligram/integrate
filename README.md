@@ -1,4 +1,4 @@
-# WebDriver - Docker Boilerplate
+# Integrate
 Welcome to Integrate! A testing framework that runs selenium-webdriver and ChromeDriver in a Docker Container
 
 The tests use the python bindings and includes the bare minimum. It includes tests and page objects for both chrome, phantomjs and examples on how to work with sensitive data using environment variables. It also includes a [Dockerfile](https://github.com/shawnshaligram/selenium-python-docker-boilerplate/blob/master/Dockerfile). Implementing this in existing project is easy, just clone this repo and get going!
