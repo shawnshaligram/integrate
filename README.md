@@ -23,6 +23,41 @@ Check out [this document](http://www.seleniumhq.org/docs/) for Selenium's concep
 To write new tests, you can either bind mount your python files to the container or create a new Docker image and copy files into the image.
 The example code is located at `tests` and `page_objects` in the container. You may overwrite this file or place your files at different locations.
 
+### Directory structure
+
+```
+├── config
+│   ├── cucumber.yml
+│   ├── env.rb
+│   ├── mobile
+│   │   ├── android
+│   │   └── ios
+│   └── hook.rb
+├── data
+│   └── fixtures
+├── helpers
+├── features
+│   ├── api
+│   └── app
+│   └── web
+├── pages
+│   ├── api
+│   ├── app
+│   ├── web
+│   └── application.rb
+├── lib
+│   ├── reporting
+│   ├── viewer
+├── scripts
+│   ├── docker
+│   │   ├── Dockerfile
+│   │   └── docker.sh
+├── docker-compose.yml
+├── Rakefile
+└── wiki
+```
+
+
 ## Library documentation
 
 - Selenium http://www.seleniumhq.org/docs/
