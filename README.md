@@ -12,9 +12,9 @@ The tests use the python bindings and includes the bare minimum. It includes tes
 
 ## Usage
 
-One liner: docker run -it -p 4444:4444 shawnshaligram/selenium-webdriver-docker-boilerplate
-Selenium UI is available at: http://DOCKERHOST:4444/wd/hub/static/resource/hub.html
-You should be able to click the "Create session" button and select "Chrome"
+- docker run -it -p 4444:4444 shawnshaligram/selenium-webdriver-docker-boilerplate
+- Selenium UI is available at: http://DOCKERHOST:4444/wd/hub/static/resource/hub.html
+- You should be able to click the "Create session" button and select "Chrome"
 
 ## Write tests
 
