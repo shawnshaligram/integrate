@@ -1,7 +1,3 @@
-# Integrate
-Welcome to Integrate! A testing framework that runs selenium-webdriver and ChromeDriver in a Docker Container
-
-The tests use the python bindings and includes the bare minimum. It includes tests and page objects for both chrome, phantomjs and examples on how to work with sensitive data using environment variables. It also includes a [Dockerfile](https://github.com/shawnshaligram/selenium-python-docker-boilerplate/blob/master/Dockerfile). Implementing this in existing project is easy, just clone this repo and get going!
 
 ## Features
  - Sample Page Object Pattern 
@@ -21,41 +17,7 @@ The tests use the python bindings and includes the bare minimum. It includes tes
 Check out [this document](http://www.seleniumhq.org/docs/) for Selenium's concepts and operations.
 
 To write new tests, you can either bind mount your python files to the container or create a new Docker image and copy files into the image.
-The example code is located at `tests` and `page_objects` in the container. You may overwrite this file or place your files at different locations.
-
-### Directory structure
-
-```
-├── config
-│   ├── cucumber.yml
-│   ├── env.rb
-│   ├── mobile
-│   │   ├── android
-│   │   └── ios
-│   └── hook.rb
-├── data
-│   └── fixtures
-├── helpers
-├── features
-│   ├── api
-│   └── app
-│   └── web
-├── pages
-│   ├── api
-│   ├── app
-│   ├── web
-│   └── application.rb
-├── lib
-│   ├── reporting
-│   ├── viewer
-├── scripts
-│   ├── docker
-│   │   ├── Dockerfile
-│   │   └── docker.sh
-├── docker-compose.yml
-├── Rakefile
-└── wiki
-```
+The example code is located at `tests` and `page_objects` in the container. You may overwrite this file or place your files at different locations
 
 
 ## Library documentation
